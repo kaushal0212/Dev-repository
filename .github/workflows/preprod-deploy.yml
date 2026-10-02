@@ -10,7 +10,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -24,6 +23,6 @@ jobs:
           curl -i -L \
             -X POST \
             -H "Accept: application/vnd.github+json" \
-            -H "Authorization: Bearer ${{ secrets.TEST_REPO_TOKEN_01_OCT}}" \
+            -H "Authorization: Bearer ${{ secrets.TEST_REPO_TOKEN_01_OCT }}" \
             https://api.github.com/repos/kaushal0212/Test-repository/dispatches \
             -d '{"event_type":"run-preprod-tests"}'
