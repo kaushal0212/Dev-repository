@@ -18,3 +18,12 @@ jobs:
         run: |
           echo "Deploying application to PreProd..."
           echo "PreProd deployment successful"
+
+      - name: Trigger Playwright test repo
+        run: |
+          curl -i -L \
+            -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${{ secrets.TEST_REPO_TOKEN_01_OCT }}" \
+            https://api.github.com/repos/YOUR_USERNAME/playwright-test-CI-CD/dispatches \
+            -d '{"event_type":"run-preprod-tests"}'
